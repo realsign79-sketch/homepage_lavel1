@@ -114,6 +114,16 @@ export default function ContactPage() {
                 </dt>
                 <dd className="text-ink">
                   {address ?? SITE.region.label}
+                  {address && (has(TODO_REQUIRED.jibunAddress) || has(TODO_REQUIRED.postalCode)) ? (
+                    <span className="mt-1 block text-sm text-muted">
+                      {[
+                        has(TODO_REQUIRED.postalCode) ? `우편번호 ${TODO_REQUIRED.postalCode}` : null,
+                        has(TODO_REQUIRED.jibunAddress) ? `지번 ${TODO_REQUIRED.jibunAddress}` : null,
+                      ]
+                        .filter(Boolean)
+                        .join(" · ")}
+                    </span>
+                  ) : null}
                   {!address ? (
                     <span className="mt-1 block text-sm text-muted">정확한 위치는 상담 시 안내해 드립니다.</span>
                   ) : null}

@@ -50,6 +50,7 @@ export const SITE = {
 export interface TodoRequired {
   domain: string;
   address: string;
+  jibunAddress: string;
   postalCode: string;
   latitude: number | null;
   longitude: number | null;
@@ -67,10 +68,11 @@ export interface TodoRequired {
 
 export const TODO_REQUIRED: TodoRequired = {
   domain: "", // 최종 도메인 (예: https://hyohyogrooming.com) — NEXT_PUBLIC_SITE_URL로도 지정 가능
-  address: "부산광역시 동래구 안락동 431-52", // 실제 주소 (도로명 또는 지번)
-  postalCode: "",
-  latitude: null,
-  longitude: null,
+  address: "부산광역시 동래구 명안로9번길 92-2, 1층", // 도로명 주소
+  jibunAddress: "부산광역시 동래구 안락동 431-52", // 지번 주소
+  postalCode: "47787", // OpenStreetMap 건물 단위 조회 (2026-09-18)
+  latitude: 35.1985612, // OpenStreetMap 건물 좌표
+  longitude: 129.0996695,
   openingHours: "", // 요일별 영업시간과 휴무일
   kakaoChannelUrl: "",
   naverPlaceUrl: "",
