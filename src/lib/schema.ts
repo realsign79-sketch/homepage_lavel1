@@ -1,6 +1,6 @@
 import { FAQ, type FaqItem } from "@/content/faq";
 import { SERVICES } from "@/content/services";
-import { SITE, TODO_REQUIRED, getSameAs, getSiteUrl, has, type TodoRequired } from "@/config/site";
+import { SITE, TODO_REQUIRED, getSameAs, getSiteUrl, getStreetAddress, has, type TodoRequired } from "@/config/site";
 
 /**
  * 빈 문자열, null, undefined, 빈 배열/객체를 재귀적으로 제거합니다.
@@ -53,8 +53,8 @@ export function localBusinessSchema(todo: TodoRequired = TODO_REQUIRED, siteUrl 
       "@type": "PostalAddress",
       addressCountry: "KR",
       addressRegion: SITE.region.province,
-      addressLocality: `${SITE.region.district} ${SITE.region.neighborhood}`,
-      streetAddress: has(todo.roadAddress) ? todo.roadAddress : undefined,
+      addressLocality: has(todo.address) ? SITE.region.district : `${SITE.region.district} ${SITE.region.neighborhood}`,
+      streetAddress: getStreetAddress(todo),
       postalCode: has(todo.postalCode) ? todo.postalCode : undefined,
     },
     geo: hasGeo ? { "@type": "GeoCoordinates", latitude: todo.latitude, longitude: todo.longitude } : undefined,

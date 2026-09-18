@@ -19,8 +19,8 @@ const crumbs = [
 ];
 
 export default function ContactPage() {
-  const { roadAddress, openingHours, naverPlaceUrl } = TODO_REQUIRED;
-  const address = has(roadAddress) ? roadAddress : null;
+  const { openingHours, naverPlaceUrl } = TODO_REQUIRED;
+  const address = has(TODO_REQUIRED.address) ? TODO_REQUIRED.address : null;
   const mapHref = has(naverPlaceUrl)
     ? naverPlaceUrl
     : address

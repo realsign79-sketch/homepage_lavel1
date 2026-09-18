@@ -49,7 +49,7 @@ export const SITE = {
 
 export interface TodoRequired {
   domain: string;
-  roadAddress: string;
+  address: string;
   postalCode: string;
   latitude: number | null;
   longitude: number | null;
@@ -67,7 +67,7 @@ export interface TodoRequired {
 
 export const TODO_REQUIRED: TodoRequired = {
   domain: "", // 최종 도메인 (예: https://hyohyogrooming.com) — NEXT_PUBLIC_SITE_URL로도 지정 가능
-  roadAddress: "", // 실제 도로명 주소
+  address: "부산광역시 동래구 안락동 431-52", // 실제 주소 (도로명 또는 지번)
   postalCode: "",
   latitude: null,
   longitude: null,
@@ -82,6 +82,20 @@ export const TODO_REQUIRED: TodoRequired = {
   realReviews: [], // 실제 게시 허락을 받은 후기만 입력
   realCaseStudies: [], // 실제 공개 허락을 받은 사례만 입력
 };
+
+/** 화면 표시용 주소 — 상세 주소가 없으면 지역명까지만 */
+export function getAddress(todo: TodoRequired = TODO_REQUIRED): string {
+  return has(todo.address) ? todo.address : SITE.region.label;
+}
+
+/** 구조화데이터용: "부산광역시 동래구 " 접두어를 뺀 나머지 (예: "안락동 431-52") */
+export function getStreetAddress(todo: TodoRequired = TODO_REQUIRED): string | undefined {
+  if (!has(todo.address)) return undefined;
+  return todo.address
+    .replace(new RegExp(`^(${SITE.region.province}|부산시?|부산)\\s*`), "")
+    .replace(new RegExp(`^${SITE.region.district}\\s*`), "")
+    .trim();
+}
 
 /** 값이 채워진 문자열만 true */
 export function has(value: string | null | undefined): value is string {

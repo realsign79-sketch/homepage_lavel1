@@ -5,6 +5,8 @@
  * 키워드만 바꾼 중복 페이지(도어웨이)를 만들지 않고, 의도별로 한 페이지씩 충실하게 작성합니다.
  * 모든 문장은 명세서의 확정 정보와 브랜드 관점 안에서만 작성합니다.
  */
+import { getAddress } from "@/config/site";
+
 import type { FaqItem } from "./faq";
 
 export type LandingFact = { label: string; value: string };
@@ -24,7 +26,7 @@ export const BUSAN_LANDING = {
     "부산광역시 동래구 안락동의 효효그루밍은 미용도구, 발·얼굴 접촉, 이전 미용 경험 때문에 미용이 어려운 강아지를 위한 미용 교육 전문 애견미용실입니다. 먼저 보호자와 상담해 어려움이 나타나는 상황을 살피고, 오늘 안전하게 가능한 범위부터 단계적으로 진행합니다. 상담 전화는 010-3573-1499입니다.",
   facts: [
     { label: "상호", value: "효효그루밍 (HYO HYO GROOMING)" },
-    { label: "위치", value: "부산광역시 동래구 안락동" },
+    { label: "주소", value: getAddress() },
     { label: "전문 분야", value: "미용하기 어려운 반려견을 위한 미용 교육" },
     { label: "진행 방식", value: "상담 후 맞춤 진행 · 평균 1~3회 집중 과정 중심" },
     { label: "대표", value: "전효정" },
@@ -54,7 +56,7 @@ export const BUSAN_LANDING = {
       id: "busan-where",
       question: "부산 동래구 애견미용실 효효그루밍은 어디에 있나요?",
       answer:
-        "부산광역시 동래구 안락동에 있습니다. 정확한 위치와 방문 방법은 상담(010-3573-1499) 시 안내해 드립니다.",
+        `${getAddress()}에 있습니다. 방문 전에 전화나 문자(010-3573-1499)로 먼저 상담해 주시면 아이 상황에 맞춰 안내해 드립니다.`,
     },
     {
       id: "busan-normal-dog",

@@ -1,13 +1,13 @@
 import Link from "next/link";
 
-import { SITE, TODO_REQUIRED, has } from "@/config/site";
+import { SITE, TODO_REQUIRED, getAddress, has } from "@/config/site";
 import { LANDINGS } from "@/content/landing";
 import { MAIN_NAV } from "@/content/navigation";
 
 import { Logo } from "./Logo";
 
 export function Footer() {
-  const { naverPlaceUrl, instagramUrl, roadAddress, openingHours } = TODO_REQUIRED;
+  const { naverPlaceUrl, instagramUrl, openingHours } = TODO_REQUIRED;
   const externals = [
     { href: naverPlaceUrl, label: "네이버 플레이스" },
     { href: instagramUrl, label: "인스타그램" },
@@ -57,7 +57,7 @@ export function Footer() {
             >
               {SITE.phone.display}
             </a>
-            <p className="mt-3 text-[0.9375rem]">{has(roadAddress) ? roadAddress : SITE.region.label}</p>
+            <p className="mt-3 text-[0.9375rem]">{getAddress()}</p>
             {has(openingHours) ? <p className="mt-1 text-[0.9375rem]">{openingHours}</p> : null}
             {externals.length > 0 ? (
               <ul className="mt-5 flex flex-wrap gap-4 text-[0.9375rem]">

@@ -4,7 +4,7 @@ import { Menu, Phone, X } from "lucide-react";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-import { SITE } from "@/config/site";
+import { SITE, getAddress } from "@/config/site";
 import { MAIN_NAV, isActive } from "@/content/navigation";
 
 import { Logo } from "./Logo";
@@ -132,7 +132,7 @@ export function MobileNav({ pathname }: { pathname: string }) {
               <Phone aria-hidden="true" className="h-5 w-5" strokeWidth={1.8} />
               {SITE.phone.display} 전화 상담
             </a>
-            <p className="mt-4 text-center text-sm text-muted">{SITE.region.label}</p>
+            <p className="mt-4 text-center text-sm text-muted">{getAddress()}</p>
           </nav>
         </div>
       ) : null}

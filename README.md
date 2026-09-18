@@ -34,7 +34,7 @@ npm run test:e2e     # E2E + 360/768/1440 스크린샷 (test-results/screens/)
 | 항목 | 채우면 바뀌는 것 |
 |---|---|
 | `domain` | canonical·사이트맵 기준 주소 (또는 환경변수 `NEXT_PUBLIC_SITE_URL`) |
-| `roadAddress`, `postalCode` | 푸터·상담 페이지 주소, 네이버 지도 버튼, LocalBusiness 주소 |
+| `address`, `postalCode` | 푸터·상담·랜딩 페이지 주소, 네이버 지도 버튼, LocalBusiness 주소 |
 | `latitude`, `longitude` | LocalBusiness 좌표 |
 | `openingHours` | 푸터·상담 페이지 운영시간 |
 | `kakaoChannelUrl` | 카카오 상담 버튼(모바일 하단 독, CTA) |

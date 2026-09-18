@@ -6,7 +6,7 @@ import { faqSchema, localBusinessSchema, prune, serializeJsonLd } from "@/lib/sc
 
 const empty: TodoRequired = {
   ...TODO_REQUIRED,
-  roadAddress: "",
+  address: "",
   postalCode: "",
   latitude: null,
   longitude: null,
@@ -35,10 +35,11 @@ describe("JSON-LD", () => {
 
   it("값이 채워지면 주소와 좌표가 출력된다", () => {
     const data = localBusinessSchema(
-      { ...empty, roadAddress: "안락로 1", latitude: 35.2, longitude: 129.1 },
+      { ...empty, address: "부산광역시 동래구 안락동 431-52", latitude: 35.2, longitude: 129.1 },
       "https://example.com",
     );
-    expect(data.address.streetAddress).toBe("안락로 1");
+    expect(data.address.streetAddress).toBe("안락동 431-52");
+    expect(data.address.addressLocality).toBe("동래구");
     expect(data.geo).toMatchObject({ latitude: 35.2, longitude: 129.1 });
   });
 

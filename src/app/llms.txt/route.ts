@@ -1,4 +1,4 @@
-import { SITE, TODO_REQUIRED, getSiteUrl, has } from "@/config/site";
+import { SITE, TODO_REQUIRED, getAddress, getSiteUrl, has } from "@/config/site";
 import { FAQ } from "@/content/faq";
 import { LANDINGS } from "@/content/landing";
 import { PROCESS_NOTE, PROCESS_STEPS, SERVICES } from "@/content/services";
@@ -18,7 +18,7 @@ export function GET() {
     `- 상호: ${SITE.name}`,
     `- 대표: ${SITE.owner}`,
     `- 전화: ${SITE.phone.display}`,
-    `- 지역: ${has(t.roadAddress) ? t.roadAddress : SITE.region.label}`,
+    `- 주소: ${getAddress(t)}`,
     ...(has(t.openingHours) ? [`- 운영시간: ${t.openingHours}`] : []),
     `- 사업자등록번호: ${SITE.businessNumber}`,
     `- 진행 방식: ${SITE.programNote}`,

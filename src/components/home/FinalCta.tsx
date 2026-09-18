@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 import { ContactButtons } from "@/components/ui/ContactButtons";
-import { SITE } from "@/config/site";
+import { SITE, getAddress } from "@/config/site";
 import { FINAL_CTA } from "@/content/home";
 import { PHOTOS } from "@/content/images";
 
@@ -24,7 +24,7 @@ export function FinalCta() {
               <ContactButtons location="final_cta" tone="inverse" />
             </div>
             <p className="mt-8 text-sm text-surface/70">
-              {SITE.name} · {SITE.region.label}
+              {SITE.name} · {getAddress()}
             </p>
           </div>
           <div className="relative hidden min-h-[28rem] lg:block">
