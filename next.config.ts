@@ -5,6 +5,16 @@ const nextConfig: NextConfig = {
     formats: ["image/avif", "image/webp"],
   },
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "www.hyohyos2.com" }],
+        destination: "https://hyohyos2.com/:path*",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
